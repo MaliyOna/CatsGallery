@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CatsGallery.MainPage">
+
+    <Grid>
+        <Image Source="background.jpg"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All"/>
+
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All" >
+            <VerticalStackLayout
+                Padding="30,0"
+                Spacing="30">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Text="Мурзик - Самый уютный кот в городе"
+                        FontSize="24"/>
+
+                    <Image 
+                        Source="cat1.jpg"
+                        HeightRequest="200"
+                        HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Text="Барсик - Охотник за приключениями"
+                        FontSize="24"/>
+
+                    <Image 
+                        Source="cat2.jpg"
+                        HeightRequest="200"
+                        HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Text="Пушок - Облачко мягкости"
+                        FontSize="24"/>
+
+                    <Image 
+                        Source="cat3.jpg"
+                        HeightRequest="200"
+                        HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        Text="Симба - Король ленивого воскресенья"
+                        FontSize="24"/>
+
+                    <Image 
+                        Source="cat4.jpg"
+                        HeightRequest="200"
+                        HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
