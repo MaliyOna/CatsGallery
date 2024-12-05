@@ -1,88 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:CatsGallery.ViewModels"
              x:Class="CatsGallery.MainPage">
 
-    <ContentPage.BindingContext>
-        <local:CatsViewModel/>
-    </ContentPage.BindingContext>
-    
     <Grid>
         <Image Source="background.jpg"
-               Aspect="AspectFill"/>
+            Aspect="AspectFill"/>
 
-        <ScrollView>
-            <VerticalStackLayout
-                Padding="30,0"
-                Spacing="30">
-
-                <VerticalStackLayout Spacing="10">
-                    <Label
-                        Text="{Binding Cats[0].Description}"
-                        FontSize="24"/>
-
-                    <Image 
-                        Source="{Binding Cats[0].ImageSource}"
-                        HeightRequest="200"
-                        HorizontalOptions="Center"/>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Spacing="10">
-                    <Label
-                        Text="{Binding Cats[1].Description}"
-                        FontSize="24"/>
-
-                    <Image 
-                        Source="{Binding Cats[1].ImageSource}"
-                        HeightRequest="200"
-                        HorizontalOptions="Center"/>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Spacing="10">
-                    <Label
-                        Text="{Binding Cats[2].Description}"
-                        FontSize="24"/>
-
-                    <Image 
-                        Source="{Binding Cats[2].ImageSource}"
-                        HeightRequest="200"
-                        HorizontalOptions="Center"/>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Spacing="10">
-                    <Label
-                        Text="{Binding Cats[3].Description}"
-                        FontSize="24"/>
-
-                    <Image 
-                        Source="{Binding Cats[3].ImageSource}"
-                        HeightRequest="200"
-                        HorizontalOptions="Center"/>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Spacing="10">
-                    <Label
-                        Text="{Binding Cats[3].Description}"
-                        FontSize="24"/>
-
-                    <Image 
-                        Source="{Binding Cats[3].ImageSource}"
-                        HeightRequest="200"
-                        HorizontalOptions="Center"/>
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Spacing="10">
-                    <Label
-                         Text="{Binding Cats[3].Description}"
-                         FontSize="24"/>
-
-                    <Image 
-                        Source="{Binding Cats[3].ImageSource}"
-                        HeightRequest="200"
-                        HorizontalOptions="Center"/>
-                </VerticalStackLayout>
-            </VerticalStackLayout>
-        </ScrollView>
+        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Button Text="Страница с котиками" Clicked="OnNavigateButtonClicked"
+                    HorizontalOptions="Center" VerticalOptions="Center"/>
+        </VerticalStackLayout>
     </Grid>
 </ContentPage>

@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CatsGallery.Abstractions;
+using CatsGallery.Services;
+using CatsGallery.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace CatsGallery
 {
@@ -15,8 +18,11 @@ namespace CatsGallery
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<ICatsService, CatsService>();
+            builder.Services.AddSingleton<CatsViewModel>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
