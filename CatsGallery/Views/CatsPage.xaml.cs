@@ -1,6 +1,6 @@
 using CatsGallery.ViewModels;
 
-namespace CatsGallery;
+namespace CatsGallery.Views;
 
 public partial class CatsPage : ContentPage
 {

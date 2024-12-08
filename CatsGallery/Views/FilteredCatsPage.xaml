@@ -1,0 +1,36 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CatsGallery.ViewModels"
+             x:Class="CatsGallery.Views.FilteredCatsPage"
+             Title="Поиск котика">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <SearchBar 
+                Placeholder="Поиск котов по имени..."
+                TextChanged="SearchBar_TextChanged"/>
+
+            <CollectionView 
+                ItemsSource="{Binding FilteredCats}">
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Image 
+                                Source="{Binding ImageSource}" 
+                                HeightRequest="200"/>
+
+                            <Label Text="{Binding Name}" 
+                                   FontSize="16" 
+                                   FontAttributes="Bold"/>
+
+                            <Label 
+                                Text="{Binding Description}" 
+                                FontSize="14"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
