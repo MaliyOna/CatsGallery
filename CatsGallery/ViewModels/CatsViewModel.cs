@@ -3,17 +3,37 @@ using CatsGallery.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 namespace CatsGallery.ViewModels;
 
 public class CatsViewModel : INotifyPropertyChanged
 {
+    public ICommand AddCatCommand { get; }
+    public ICommand FilterCatsCommand { get; }
+
     private ObservableCollection<CatModel> _cats;
     private ObservableCollection<CatModel> _filteredCats;
     private readonly ICatsService _catService;
 
     private string _newCatName = String.Empty;
     private string _newCatDescription = String.Empty;
+
+    private string _searchText;
+
+    public string SearchText
+    {
+        get => _searchText;
+        set
+        {
+            if (_searchText != value)
+            {
+                _searchText = value;
+                OnPropertyChanged();
+                FilterCats(_searchText);
+            }
+        }
+    }
 
     public ObservableCollection<CatModel> Cats
     {
@@ -45,6 +65,8 @@ public class CatsViewModel : INotifyPropertyChanged
     {
         _catService = catService;
         LoadCats();
+        AddCatCommand = new Command(AddCat);
+        FilterCatsCommand = new Command<string>(FilterCats);
     }
 
     private void LoadCats()
