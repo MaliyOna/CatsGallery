@@ -10,11 +10,11 @@
         <VerticalStackLayout>
             <SearchBar 
                 Placeholder="Поиск котов по имени..."
-                TextChanged="SearchBar_TextChanged"/>
+                Text="{Binding SearchText}"
+                SearchCommand="{Binding FilterCatsCommand}"/>
 
             <CollectionView 
                 ItemsSource="{Binding FilteredCats}">
-                
                 <CollectionView.ItemTemplate>
                     <DataTemplate
                         x:DataType="models:CatModel">
@@ -22,11 +22,9 @@
                             <Image 
                                 Source="{Binding ImageSource}" 
                                 HeightRequest="200"/>
-
                             <Label Text="{Binding Name}" 
                                    FontSize="16" 
                                    FontAttributes="Bold"/>
-
                             <Label 
                                 Text="{Binding Description}" 
                                 FontSize="14"/>

@@ -13,7 +13,7 @@
             <Entry Placeholder="Введите описание кота"
                    Text="{Binding NewCatDescription}"/>
             <Button Text="Добавить котика"
-                    Clicked="OnAddCatClicked"/>
+                    Command="{Binding AddCatCommand}"/>
 
                 <CollectionView ItemsSource="{Binding Cats}" VerticalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>
