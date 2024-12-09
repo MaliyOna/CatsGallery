@@ -2,19 +2,19 @@ using CatsGallery.ViewModels;
 
 namespace CatsGallery.Views;
 
-public partial class FilteredCatsPage : ContentPage
+public partial class AddedCatsPage : ContentPage
 {
     private readonly CatsViewModel _viewModel;
 
-    public FilteredCatsPage(CatsViewModel viewModel)
+    public AddedCatsPage(CatsViewModel viewModel)
     {
         InitializeComponent();
         _viewModel = viewModel;
         BindingContext = _viewModel;
     }
 
-    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    private void OnAddCatClicked(object sender, EventArgs e)
     {
-        _viewModel.FilterCats(e.NewTextValue);
+        _viewModel.AddCat();
     }
 }

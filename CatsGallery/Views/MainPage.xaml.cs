@@ -16,4 +16,9 @@ public partial class MainPage : ContentPage
     {
         await Shell.Current.GoToAsync("///FilteredCatsPage");
     }
+
+    private async void ToAddCatClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("///AddedCatsPage");
+    }
 }

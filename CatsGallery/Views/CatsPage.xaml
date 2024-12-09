@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:CatsGallery.ViewModels"
+             xmlns:models="clr-namespace:CatsGallery.Models"
              x:Class="CatsGallery.Views.CatsPage"
+             x:DataType="vm:CatsViewModel"
              Title="КОТИКИ!!!!!">
     
     <Grid>
@@ -11,10 +13,11 @@
 
         <ScrollView
             Padding="30,0">
-            <CollectionView 
-                    ItemsSource="{Binding Cats}">
+            <CollectionView
+                ItemsSource="{Binding Cats}">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate
+                            x:DataType="models:CatModel">
                             <StackLayout 
                                 Padding="10">
                                 

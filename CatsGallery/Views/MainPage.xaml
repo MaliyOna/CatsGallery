@@ -22,6 +22,11 @@
                     Clicked="ToFindCatClicked"
                     HorizontalOptions="Center" 
                     VerticalOptions="Center"/>
+
+            <Button Text="Страница добавления котика"
+                    Clicked="ToAddCatClicked"
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center"/>
             
         </VerticalStackLayout>
     </Grid>

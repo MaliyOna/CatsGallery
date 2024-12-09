@@ -1,0 +1,31 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CatsGallery.ViewModels"
+             xmlns:models="clr-namespace:CatsGallery.Models"
+             x:Class="CatsGallery.Views.AddedCatsPage"
+             x:DataType="vm:CatsViewModel"
+             Title="Добавленние котика">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Entry Placeholder="Введите имя кота"
+                   Text="{Binding NewCatName}"/>
+            <Entry Placeholder="Введите описание кота"
+                   Text="{Binding NewCatDescription}"/>
+            <Button Text="Добавить котика"
+                    Clicked="OnAddCatClicked"/>
+
+                <CollectionView ItemsSource="{Binding Cats}" VerticalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:CatModel">
+                            <StackLayout Padding="10">
+                                <Image Source="{Binding ImageSource}" HeightRequest="200"/>
+                                <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold"/>
+                                <Label Text="{Binding Description}" FontSize="14"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

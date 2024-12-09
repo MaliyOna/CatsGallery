@@ -21,5 +21,10 @@
         Title="Поиск котика"
         Route="FilteredCatsPage" 
         ContentTemplate="{DataTemplate local:FilteredCatsPage}" />
+    
+    <ShellContent 
+        Title="Добавить котика"
+        Route="AddedCatsPage" 
+        ContentTemplate="{DataTemplate local:AddedCatsPage}" />
 
 </Shell>

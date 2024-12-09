@@ -12,6 +12,9 @@ public class CatsViewModel : INotifyPropertyChanged
     private ObservableCollection<CatModel> _filteredCats;
     private readonly ICatsService _catService;
 
+    private string _newCatName = String.Empty;
+    private string _newCatDescription = String.Empty;
+
     public ObservableCollection<CatModel> Cats
     {
         get => _cats;
@@ -62,6 +65,40 @@ public class CatsViewModel : INotifyPropertyChanged
             FilteredCats = new ObservableCollection<CatModel>(Cats.Where(c => c.Name.ToLower().Contains(searchText.ToLower())));
         }
         OnPropertyChanged(nameof(FilteredCats));
+    }
+
+    public string NewCatName
+    {
+        get => _newCatName;
+        set
+        {
+            _newCatName = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string NewCatDescription
+    {
+        get => _newCatDescription;
+        set
+        {
+            _newCatDescription = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public void AddCat()
+    {
+        var newCat = new CatModel
+        {
+            Name = NewCatName,
+            Description = NewCatDescription,
+            ImageSource = "cat5.jpg"
+        };
+        Cats.Add(newCat);
+        FilteredCats.Add(newCat);
+        NewCatName = string.Empty;
+        NewCatDescription = string.Empty;
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
