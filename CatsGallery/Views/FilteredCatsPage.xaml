@@ -15,6 +15,7 @@
 
             <CollectionView 
                 ItemsSource="{Binding FilteredCats}">
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate
                         x:DataType="models:CatModel">
@@ -22,9 +23,11 @@
                             <Image 
                                 Source="{Binding ImageSource}" 
                                 HeightRequest="200"/>
+
                             <Label Text="{Binding Name}" 
                                    FontSize="16" 
                                    FontAttributes="Bold"/>
+
                             <Label 
                                 Text="{Binding Description}" 
                                 FontSize="14"/>
