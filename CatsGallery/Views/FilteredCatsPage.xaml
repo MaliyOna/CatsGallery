@@ -9,9 +9,11 @@
     <ScrollView>
         <VerticalStackLayout>
             <SearchBar 
+                x:Name="SearchBarReference"
                 Placeholder="Поиск котов по имени..."
                 Text="{Binding SearchText}"
-                SearchCommand="{Binding FilterCatsCommand}"/>
+                SearchCommand="{Binding FilterCatsCommand}"
+                SearchCommandParameter="{Binding Text, Source={x:Reference SearchBarReference}}" />
 
             <CollectionView 
                 ItemsSource="{Binding FilteredCats}">

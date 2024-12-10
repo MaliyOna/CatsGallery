@@ -1,13 +1,11 @@
 ﻿using CatsGallery.Abstractions;
 using CatsGallery.Models;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace CatsGallery.ViewModels;
 
-public class CatsViewModel : INotifyPropertyChanged
+public class CatsViewModel
 {
     public ICommand AddCatCommand { get; }
     public ICommand FilterCatsCommand { get; }
@@ -16,57 +14,36 @@ public class CatsViewModel : INotifyPropertyChanged
     private ObservableCollection<CatModel> _filteredCats;
     private readonly ICatsService _catService;
 
-    private string _newCatName = String.Empty;
-    private string _newCatDescription = String.Empty;
+    private string _newCatName = string.Empty;
+    private string _newCatDescription = string.Empty;
 
-    private string _searchText;
+    private string _searchText = string.Empty;
 
     public string SearchText
     {
         get => _searchText;
-        set
-        {
-            if (_searchText != value)
-            {
-                _searchText = value;
-                OnPropertyChanged();
-                FilterCats(_searchText);
-            }
-        }
+        set => _searchText = value;
     }
 
     public ObservableCollection<CatModel> Cats
     {
         get => _cats;
-        set
-        {
-            if (_cats != value)
-            {
-                _cats = value;
-                OnPropertyChanged();
-            }
-        }
+        set => _cats = value;
     }
 
     public ObservableCollection<CatModel> FilteredCats
     {
         get => _filteredCats;
-        set
-        {
-            if (_filteredCats != value)
-            {
-                _filteredCats = value;
-                OnPropertyChanged();
-            }
-        }
+        set => _filteredCats = value;
     }
 
     public CatsViewModel(ICatsService catService)
     {
         _catService = catService;
         LoadCats();
+
         AddCatCommand = new Command(AddCat);
-        FilterCatsCommand = new Command<string>(FilterCats);
+        FilterCatsCommand = new Command<object>(FilterCats);
     }
 
     private void LoadCats()
@@ -76,37 +53,37 @@ public class CatsViewModel : INotifyPropertyChanged
         FilteredCats = new ObservableCollection<CatModel>(cats);
     }
 
-    public void FilterCats(string searchText)
+    private void FilterCats(object searchText)
     {
-        if (string.IsNullOrWhiteSpace(searchText))
+        var text = searchText as string ?? string.Empty;
+
+        if (string.IsNullOrWhiteSpace(text))
         {
             FilteredCats = new ObservableCollection<CatModel>(Cats);
         }
         else
         {
-            FilteredCats = new ObservableCollection<CatModel>(Cats.Where(c => c.Name.ToLower().Contains(searchText.ToLower())));
+            FilteredCats.Clear();
+
+            var filtered = Cats.Where(cat => cat.Name.Contains(text, StringComparison.OrdinalIgnoreCase));
+
+            foreach (var cat in filtered)
+            {
+                FilteredCats.Add(cat);
+            }
         }
-        OnPropertyChanged(nameof(FilteredCats));
     }
 
     public string NewCatName
     {
         get => _newCatName;
-        set
-        {
-            _newCatName = value;
-            OnPropertyChanged();
-        }
+        set => _newCatName = value;
     }
 
     public string NewCatDescription
     {
         get => _newCatDescription;
-        set
-        {
-            _newCatDescription = value;
-            OnPropertyChanged();
-        }
+        set => _newCatDescription = value;
     }
 
     public void AddCat()
@@ -121,12 +98,5 @@ public class CatsViewModel : INotifyPropertyChanged
         FilteredCats.Add(newCat);
         NewCatName = string.Empty;
         NewCatDescription = string.Empty;
-    }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
