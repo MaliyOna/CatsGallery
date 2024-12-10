@@ -2,17 +2,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:CatsGallery.ViewModels"
              xmlns:models="clr-namespace:CatsGallery.Models"
+             xmlns:behaviors="clr-namespace:CatsGallery.Behaviors"
              x:Class="CatsGallery.Views.FilteredCatsPage"
              x:DataType="vm:CatsViewModel"
              Title="Поиск котика">
 
     <ScrollView>
         <VerticalStackLayout>
-            <SearchBar 
-                Placeholder="Поиск котов по имени..."
-                Text="{Binding SearchText}"
-                SearchCommand="{Binding FilterCatsCommand}"
-                SearchCommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+            <SearchBar Placeholder="Поиск котов по имени...">
+                <SearchBar.Behaviors>
+                    <behaviors:SearchBarTextChangedBehavior Command="{Binding FilterCatsCommand}" />
+                </SearchBar.Behaviors>
+            </SearchBar>
 
             <CollectionView 
                 ItemsSource="{Binding FilteredCats}"

@@ -39,11 +39,11 @@ public class CatsViewModel
 
     public CatsViewModel(ICatsService catService)
     {
+        FilterCatsCommand = new Command<object>(FilterCats);
         _catService = catService;
         LoadCats();
 
         AddCatCommand = new Command(AddCat);
-        FilterCatsCommand = new Command<object>(FilterCats);
     }
 
     private void LoadCats()
