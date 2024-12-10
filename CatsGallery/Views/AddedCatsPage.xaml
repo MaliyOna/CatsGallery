@@ -15,17 +15,9 @@
             <Button Text="Добавить котика"
                     Command="{Binding AddCatCommand}"/>
 
-                <CollectionView ItemsSource="{Binding Cats}" VerticalOptions="FillAndExpand">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:CatModel">
-                            <StackLayout Padding="10">
-                                <Image Source="{Binding ImageSource}" HeightRequest="200"/>
-                                <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold"/>
-                                <Label Text="{Binding Description}" FontSize="14"/>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+            <CollectionView ItemsSource="{Binding Cats}"
+                            ItemTemplate="{StaticResource CatItemTemplate}">
+            </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

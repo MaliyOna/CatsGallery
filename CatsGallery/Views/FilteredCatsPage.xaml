@@ -9,33 +9,14 @@
     <ScrollView>
         <VerticalStackLayout>
             <SearchBar 
-                x:Name="SearchBarReference"
                 Placeholder="Поиск котов по имени..."
                 Text="{Binding SearchText}"
                 SearchCommand="{Binding FilterCatsCommand}"
-                SearchCommandParameter="{Binding Text, Source={x:Reference SearchBarReference}}" />
+                SearchCommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
 
             <CollectionView 
-                ItemsSource="{Binding FilteredCats}">
-
-                <CollectionView.ItemTemplate>
-                    <DataTemplate
-                        x:DataType="models:CatModel">
-                        <StackLayout Padding="10">
-                            <Image 
-                                Source="{Binding ImageSource}" 
-                                HeightRequest="200"/>
-
-                            <Label Text="{Binding Name}" 
-                                   FontSize="16" 
-                                   FontAttributes="Bold"/>
-
-                            <Label 
-                                Text="{Binding Description}" 
-                                FontSize="14"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+                ItemsSource="{Binding FilteredCats}"
+                ItemTemplate="{StaticResource CatItemTemplate}">
             </CollectionView>
         </VerticalStackLayout>
     </ScrollView>

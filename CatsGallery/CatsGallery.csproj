@@ -68,6 +68,9 @@
 	  <Compile Update="Views\AddedCatsPage.xaml.cs">
 	    <DependentUpon>AddedCatsPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="CollectionViews\CatItemPage.xaml.cs">
+	    <DependentUpon>CatItemPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\FilteredCatsPage.xaml.cs">
 	    <DependentUpon>FilteredCatsPage.xaml</DependentUpon>
 	  </Compile>
@@ -75,6 +78,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\AddedCatsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="CollectionViews\CatItemPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\FilteredCatsPage.xaml">
