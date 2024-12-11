@@ -8,9 +8,11 @@
 
     <ScrollView>
         <VerticalStackLayout>
-            <SearchBar Placeholder="Поиск котов по имени..."
-                       x:Name="CatSearchBar"
-                       Text="{Binding SearchText}">
+            <SearchBar 
+                Placeholder="Поиск котов по имени..."
+                x:Name="CatSearchBar"
+                Text="{Binding SearchText}">
+
                 <SearchBar.Behaviors>
                     <toolkit:EventToCommandBehavior 
                         EventName="TextChanged"
