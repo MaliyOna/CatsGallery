@@ -15,8 +15,9 @@
             <Button Text="Добавить котика"
                     Command="{Binding AddCatCommand}"/>
 
-            <CollectionView ItemsSource="{Binding Cats}"
-                            ItemTemplate="{StaticResource CatItemTemplate}">
+            <CollectionView 
+                ItemsSource="{Binding Cats}"
+                ItemTemplate="{StaticResource CatItemTemplate}">
             </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
