@@ -1,7 +1,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:CatsGallery.ViewModels"
-             xmlns:models="clr-namespace:CatsGallery.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="CatsGallery.Views.FilteredCatsPage"
              x:DataType="vm:CatsViewModel"
              Title="Поиск котика">
@@ -10,29 +10,20 @@
         <VerticalStackLayout>
             <SearchBar 
                 Placeholder="Поиск котов по имени..."
-                TextChanged="SearchBar_TextChanged"/>
+                x:Name="CatSearchBar"
+                Text="{Binding SearchText}">
+
+                <SearchBar.Behaviors>
+                    <toolkit:EventToCommandBehavior 
+                        EventName="TextChanged"
+                        Command="{Binding FilterCatsCommand}"
+                        CommandParameter="{Binding Text, Source={x:Reference CatSearchBar}}" />
+                </SearchBar.Behaviors>
+            </SearchBar>
 
             <CollectionView 
-                ItemsSource="{Binding FilteredCats}">
-                
-                <CollectionView.ItemTemplate>
-                    <DataTemplate
-                        x:DataType="models:CatModel">
-                        <StackLayout Padding="10">
-                            <Image 
-                                Source="{Binding ImageSource}" 
-                                HeightRequest="200"/>
-
-                            <Label Text="{Binding Name}" 
-                                   FontSize="16" 
-                                   FontAttributes="Bold"/>
-
-                            <Label 
-                                Text="{Binding Description}" 
-                                FontSize="14"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+                ItemsSource="{Binding FilteredCats}"
+                ItemTemplate="{StaticResource CatItemTemplate}">
             </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
