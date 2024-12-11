@@ -1,6 +1,7 @@
 ﻿using CatsGallery.Abstractions;
 using CatsGallery.Services;
 using CatsGallery.ViewModels;
+using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 
 namespace CatsGallery
@@ -12,6 +13,7 @@ namespace CatsGallery
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
