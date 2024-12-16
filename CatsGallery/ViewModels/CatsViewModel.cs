@@ -1,5 +1,7 @@
 ﻿using CatsGallery.Abstractions;
+using CatsGallery.CollectionViews;
 using CatsGallery.Models;
+using CommunityToolkit.Maui.Views;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -40,6 +42,7 @@ public class CatsViewModel
     public CatsViewModel(ICatsService catService)
     {
         FilterCatsCommand = new Command<object>(FilterCats);
+        OpenImageCommand = new Command<CatModel>(OpenImagePopup);
         _catService = catService;
         LoadCats();
 
@@ -98,5 +101,13 @@ public class CatsViewModel
         FilteredCats.Add(newCat);
         NewCatName = string.Empty;
         NewCatDescription = string.Empty;
+    }
+
+    public ICommand OpenImageCommand { get; private set; }
+
+    private void OpenImagePopup(CatModel cat)
+    {
+        var popup = new CatImagePopup { BindingContext = cat };
+        Application.Current.MainPage.ShowPopup(popup);
     }
 }

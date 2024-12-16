@@ -1,0 +1,8 @@
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+               x:Class="CatsGallery.CollectionViews.CatImagePopup">
+    <Grid>
+        <Image Source="{Binding ImageSource}" Aspect="AspectFit" />
+    </Grid>
+</toolkit:Popup>
