@@ -10,12 +10,20 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <DataTemplate x:Key="CatItemTemplate" x:DataType="models:CatModel">
-                <StackLayout Padding="10">
-                    <Image Source="{Binding ImageSource}" HeightRequest="200">
+            <DataTemplate 
+                x:Key="CatItemTemplate" 
+                x:DataType="models:CatModel">
+                <StackLayout 
+                    Padding="10">
+
+                    <Image 
+                        Source="{Binding ImageSource}" 
+                        HeightRequest="200">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer
-                                Command="{Binding BindingContext.OpenImageCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                Command="{Binding BindingContext.OpenImageCommand, 
+                                    Source={RelativeSource 
+                                        AncestorType={x:Type ContentPage}}}"
                                 CommandParameter="{Binding}" />
                         </Image.GestureRecognizers>
                     </Image>
