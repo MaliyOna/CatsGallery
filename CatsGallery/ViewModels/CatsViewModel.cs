@@ -1,16 +1,17 @@
 ﻿using CatsGallery.Abstractions;
 using CatsGallery.CollectionViews;
 using CatsGallery.Models;
-using CommunityToolkit.Maui.Views;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-
 namespace CatsGallery.ViewModels;
 
 public class CatsViewModel
 {
     public ICommand AddCatCommand { get; }
     public ICommand FilterCatsCommand { get; }
+
+    public ICommand OpenImageCommand { get; }
 
     private ObservableCollection<CatModel> _cats;
     private ObservableCollection<CatModel> _filteredCats;
@@ -103,11 +104,9 @@ public class CatsViewModel
         NewCatDescription = string.Empty;
     }
 
-    public ICommand OpenImageCommand { get; private set; }
-
-    private void OpenImagePopup(CatModel cat)
+    private async void OpenImagePopup(CatModel cat)
     {
         var popup = new CatImagePopup { BindingContext = cat };
-        Application.Current.MainPage.ShowPopup(popup);
+        await MopupService.Instance.PushAsync(popup);
     }
 }

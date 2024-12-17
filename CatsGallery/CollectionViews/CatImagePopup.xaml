@@ -1,8 +1,18 @@
-<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-               xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
-               x:Class="CatsGallery.CollectionViews.CatImagePopup">
-    <Grid>
+<?xml version="1.0" encoding="utf-8" ?>
+<mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+              x:Class="CatsGallery.CollectionViews.CatImagePopup">
+
+    <Grid  Padding="10">
         <Image Source="{Binding ImageSource}" Aspect="AspectFit" />
+
+        <Button Text="X"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                BackgroundColor="Transparent"
+                TextColor="White"
+                Clicked="ClosePopup" />
     </Grid>
-</toolkit:Popup>
+</mopups:PopupPage>
