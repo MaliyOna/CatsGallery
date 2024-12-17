@@ -24,6 +24,7 @@ namespace CatsGallery
 
             builder.Services.AddSingleton<ICatsService, CatsService>();
             builder.Services.AddSingleton<CatsViewModel>();
+            builder.Services.AddSingleton<IPopupService, Services.PopupService>();
 
 #if DEBUG
             builder.Logging.AddDebug();

@@ -1,7 +1,6 @@
 ﻿using CatsGallery.Abstractions;
 using CatsGallery.CollectionViews;
 using CatsGallery.Models;
-using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 namespace CatsGallery.ViewModels;
@@ -10,8 +9,9 @@ public class CatsViewModel
 {
     public ICommand AddCatCommand { get; }
     public ICommand FilterCatsCommand { get; }
-
     public ICommand OpenImageCommand { get; }
+
+    private readonly IPopupService _popupService;
 
     private ObservableCollection<CatModel> _cats;
     private ObservableCollection<CatModel> _filteredCats;
@@ -40,8 +40,10 @@ public class CatsViewModel
         set => _filteredCats = value;
     }
 
-    public CatsViewModel(ICatsService catService)
+    public CatsViewModel(ICatsService catService, IPopupService popupService)
     {
+        _popupService = popupService;
+
         FilterCatsCommand = new Command<object>(FilterCats);
         OpenImageCommand = new Command<CatModel>(OpenImagePopup);
         _catService = catService;
@@ -106,7 +108,7 @@ public class CatsViewModel
 
     private async void OpenImagePopup(CatModel cat)
     {
-        var popup = new CatImagePopup { BindingContext = cat };
-        await MopupService.Instance.PushAsync(popup);
+        await _popupService.ShowPopupAsync<CatImagePopup>(cat);
+
     }
 }
