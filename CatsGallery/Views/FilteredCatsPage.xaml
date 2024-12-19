@@ -22,10 +22,15 @@
                 </SearchBar.Behaviors>
             </SearchBar>
 
-            <CollectionView ItemsSource="{Binding FilteredCats}">
+            <CollectionView 
+                ItemsSource="{Binding FilteredCats}">
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <controls:CatCardView BindingContext="{Binding}" />
+                        
+                        <controls:CatCardView 
+                            CatModel="{Binding}" />
+                        
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

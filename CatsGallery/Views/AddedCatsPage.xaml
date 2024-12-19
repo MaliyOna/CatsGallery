@@ -18,9 +18,13 @@
 
             <CollectionView 
                 ItemsSource="{Binding Cats}">
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <controls:CatCardView />
+                        
+                        <controls:CatCardView 
+                            CatModel="{Binding}" />
+                        
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
