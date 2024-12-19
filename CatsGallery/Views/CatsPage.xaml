@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:CatsGallery.ViewModels"
              x:Class="CatsGallery.Views.CatsPage"
+             xmlns:controls="clr-namespace:CatsGallery.Controls"
              x:DataType="vm:CatsViewModel"
              Title="КОТИКИ!!!!!">
     
@@ -10,11 +11,13 @@
         <Image Source="background.jpg"
            Aspect="AspectFill"/>
 
-        <ScrollView
-            Padding="30,0">
-            <CollectionView 
-                ItemsSource="{Binding Cats}"
-                ItemTemplate="{StaticResource CatItemTemplate}">
+        <ScrollView Padding="30,0">
+            <CollectionView ItemsSource="{Binding Cats}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:CatCardView BindingContext="{Binding}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
             </CollectionView>
         </ScrollView>
     </Grid>

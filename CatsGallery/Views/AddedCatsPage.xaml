@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:CatsGallery.ViewModels"
              xmlns:models="clr-namespace:CatsGallery.Models"
+             xmlns:controls="clr-namespace:CatsGallery.Controls"
              x:Class="CatsGallery.Views.AddedCatsPage"
              x:DataType="vm:CatsViewModel"
              Title="Добавленние котика">
@@ -16,8 +17,12 @@
                     Command="{Binding AddCatCommand}"/>
 
             <CollectionView 
-                ItemsSource="{Binding Cats}"
-                ItemTemplate="{StaticResource CatItemTemplate}">
+                ItemsSource="{Binding Cats}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:CatCardView />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
             </CollectionView>
         </VerticalStackLayout>
     </ScrollView>

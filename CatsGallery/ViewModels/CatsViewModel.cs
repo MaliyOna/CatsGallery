@@ -109,6 +109,5 @@ public class CatsViewModel
     private async void OpenImagePopup(CatModel cat)
     {
         await _popupService.ShowPopupAsync<CatImagePopup>(cat);
-
     }
 }
