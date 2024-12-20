@@ -1,25 +1,37 @@
+﻿using CatsGallery.Models;
+using System.Windows.Input;
+
 namespace CatsGallery.Controls
 {
     public partial class CatCardView : ContentView
     {
-        public static readonly BindableProperty CatModelProperty =
-            BindableProperty.Create(nameof(CatModel), typeof(object), typeof(CatCardView), propertyChanged: OnCatModelChanged);
+        public static readonly BindableProperty CatDataProperty =
+            BindableProperty.Create(
+                nameof(CatData),
+                typeof(CatModel),
+                typeof(CatCardView));
 
-        public object CatModel
+        public static readonly BindableProperty CommandProperty =
+            BindableProperty.Create(
+                nameof(Command),
+                typeof(ICommand),
+                typeof(CatCardView));
+
+        public ICommand Command
         {
-            get => GetValue(CatModelProperty);
-            set => SetValue(CatModelProperty, value);
+            get => (ICommand)GetValue(CommandProperty);
+            set => SetValue(CommandProperty, value);
+        }
+
+        public CatModel CatData
+        {
+            get => (CatModel)GetValue(CatDataProperty);
+            set => SetValue(CatDataProperty, value);
         }
 
         public CatCardView()
         {
             InitializeComponent();
-        }
-
-        private static void OnCatModelChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var control = (CatCardView)bindable;
-            control.BindingContext = newValue;
         }
     }
 }

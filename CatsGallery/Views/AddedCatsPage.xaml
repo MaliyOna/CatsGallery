@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:CatsGallery.Controls"
              x:Class="CatsGallery.Views.AddedCatsPage"
              x:DataType="vm:CatsViewModel"
+             x:Name="ThisPage"
              Title="Добавленние котика">
 
     <ScrollView>
@@ -20,11 +21,12 @@
                 ItemsSource="{Binding Cats}">
                 
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        
+                    <DataTemplate  x:DataType="models:CatModel">
+
                         <controls:CatCardView 
-                            CatModel="{Binding}" />
-                        
+                            CatData="{Binding .}" 
+                            Command="{Binding BindingContext.OpenImageCommand, Source={x:Reference Name=ThisPage}}" />
+
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

@@ -1,24 +1,27 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CatsGallery.Controls.CatCardView">
+             x:Class="CatsGallery.Controls.CatCardView"
+             x:Name="CardView">
+
     <StackLayout Padding="10">
         <Image 
-            Source="{Binding ImageSource}" 
+            Source="{Binding CatData.ImageSource, Source={x:Reference CardView}}" 
             HeightRequest="200">
-            
+
             <Image.GestureRecognizers>
                 <TapGestureRecognizer 
-                    Command="{Binding Path=BindingContext.OpenImageCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
-                    CommandParameter="{Binding}" />
+                    Command="{Binding Command, Source={x:Reference CardView}}" 
+                    CommandParameter="{Binding CatData, Source={x:Reference CardView}}" />
             </Image.GestureRecognizers>
         </Image>
+
         <Label 
-            Text="{Binding Name}"
+            Text="{Binding CatData.Name, Source={x:Reference CardView}}" 
             FontSize="16" 
             FontAttributes="Bold" />
-        
+
         <Label 
-            Text="{Binding Description}" 
+            Text="{Binding CatData.Description, Source={x:Reference CardView}}" 
             MaxLines="3" 
             LineBreakMode="TailTruncation" 
             FontSize="14" />
