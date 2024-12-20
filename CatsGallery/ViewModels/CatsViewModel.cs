@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace CatsGallery.ViewModels
 {
-    public class CatsViewModel
+    public class CatsViewModel : ViewModelBase
     {
         public ICommand AddCatCommand { get; }
         public ICommand FilterCatsCommand { get; }
