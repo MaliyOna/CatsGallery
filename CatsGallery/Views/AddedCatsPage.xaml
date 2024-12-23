@@ -9,10 +9,45 @@
 
     <ScrollView>
         <VerticalStackLayout>
-            <Entry Placeholder="Введите имя кота"
-                   Text="{Binding NewCatName}"/>
-            <Entry Placeholder="Введите описание кота"
-                   Text="{Binding NewCatDescription}"/>
+            <Border Stroke="Grey"
+                    StrokeThickness="1"
+                    Margin="5,0,5, 10"
+                    StrokeShape="RoundRectangle 5">
+                <Entry Placeholder="Введите имя кота"
+                       Text="{Binding NewCatName}"
+                       TextChanged="OnNameTextChanged">
+                    <Entry.Triggers>
+                        <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="LightGrey" />
+                        </Trigger>
+
+                        <Trigger TargetType="Entry" Property="IsFocused" Value="False">
+                            <Setter Property="BackgroundColor" Value="White" />
+                        </Trigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Border>
+
+            <Border Stroke="Grey"
+                    StrokeThickness="1"
+                    Margin="5,0,5, 10"
+                    StrokeShape="RoundRectangle 5">
+                
+                <Entry Placeholder="Введите описание кота"
+                       Text="{Binding NewCatDescription}"
+                       TextChanged="OnDescriptionTextChanged">
+                    <Entry.Triggers>
+                        <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor" Value="LightGrey" />
+                        </Trigger>
+
+                        <Trigger TargetType="Entry" Property="IsFocused" Value="False">
+                            <Setter Property="BackgroundColor" Value="White" />
+                        </Trigger>
+                    </Entry.Triggers>
+                </Entry>
+            </Border>
+            
             <Button Text="Добавить котика"
                     Command="{Binding AddCatCommand}"/>
 
