@@ -22,7 +22,6 @@ namespace CatsGallery.WinUI
             {
                 if (handler.PlatformView is TextBox textBox)
                 {
-                    // Здесь можно установить стиль без нижней границы
                     var style = new Microsoft.UI.Xaml.Style(typeof(TextBox));
                     style.Setters.Add(new Microsoft.UI.Xaml.Setter(TextBox.BorderThicknessProperty, new Microsoft.UI.Xaml.Thickness(0)));
                     textBox.Style = style;
