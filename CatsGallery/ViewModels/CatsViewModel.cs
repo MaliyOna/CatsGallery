@@ -60,7 +60,7 @@ public class CatsViewModel : ViewModelBase
         FilteredCats = new ObservableCollection<CatModel>(cats);
     }
 
-    private void FilterCats(object searchText)
+    internal void FilterCats(object searchText)
     {
         var text = searchText as string ?? string.Empty;
 
@@ -95,6 +95,11 @@ public class CatsViewModel : ViewModelBase
 
     public void AddCat()
     {
+        if (string.IsNullOrWhiteSpace(NewCatName) || string.IsNullOrWhiteSpace(NewCatDescription))
+        {
+            return;
+        }
+
         var newCat = new CatModel
         {
             Name = NewCatName,
@@ -103,8 +108,12 @@ public class CatsViewModel : ViewModelBase
         };
         Cats.Add(newCat);
         FilteredCats.Add(newCat);
+
         NewCatName = string.Empty;
         NewCatDescription = string.Empty;
+
+        OnPropertyChanged(nameof(NewCatName));
+        OnPropertyChanged(nameof(NewCatDescription));
     }
 
     private async void OpenImagePopup(CatModel cat)
