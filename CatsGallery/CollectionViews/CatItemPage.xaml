@@ -6,15 +6,23 @@
     <StackLayout Padding="10">
         <Image 
             Source="{Binding ImageSource}" 
-            HeightRequest="200"/>
-        
+            HeightRequest="200">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding Path=BindingContext.OpenImageCommand, Source={x:Reference thisPage}}" 
+                    CommandParameter="{Binding .}" />
+            </Image.GestureRecognizers>
+        </Image>
+
         <Label 
             Text="{Binding Name}" 
             FontSize="16" 
             FontAttributes="Bold"/>
         
         <Label 
-            Text="{Binding Description}" 
+            Text="{Binding Description}"
+            MaxLines="3"
+            LineBreakMode="TailTruncation"
             FontSize="14"/>
     </StackLayout>
 </ContentView>

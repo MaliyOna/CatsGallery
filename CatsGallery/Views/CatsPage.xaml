@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:CatsGallery.ViewModels"
+             xmlns:model="clr-namespace:CatsGallery.Models"
              x:Class="CatsGallery.Views.CatsPage"
+             xmlns:controls="clr-namespace:CatsGallery.Controls"
              x:DataType="vm:CatsViewModel"
              Title="КОТИКИ!!!!!">
     
@@ -10,12 +12,19 @@
         <Image Source="background.jpg"
            Aspect="AspectFill"/>
 
-        <ScrollView
+        <ScrollView 
             Padding="30,0">
-            <CollectionView 
-                ItemsSource="{Binding Cats}"
-                ItemTemplate="{StaticResource CatItemTemplate}">
-            </CollectionView>
+            
+                <CollectionView ItemsSource="{Binding Cats}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:CatModel">
+                        <controls:CatCardView 
+                            CatData="{Binding .}" 
+                            Command="{Binding OpenImageCommand, 
+                                Source={RelativeSource AncestorType={x:Type vm:CatsViewModel}}}" />
+                    </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
         </ScrollView>
     </Grid>
 </ContentPage>

@@ -3,6 +3,7 @@ using CatsGallery.Services;
 using CatsGallery.ViewModels;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using Mopups.Hosting;
 
 namespace CatsGallery
 {
@@ -14,6 +15,7 @@ namespace CatsGallery
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
+                .ConfigureMopups()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -22,6 +24,7 @@ namespace CatsGallery
 
             builder.Services.AddSingleton<ICatsService, CatsService>();
             builder.Services.AddSingleton<CatsViewModel>();
+            builder.Services.AddSingleton<IPopupService, Services.PopupService>();
 
 #if DEBUG
             builder.Logging.AddDebug();

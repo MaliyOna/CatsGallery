@@ -63,9 +63,16 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+		<PackageReference Include="Mopups" Version="1.3.2" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="CollectionViews\CatImagePopup.xaml.cs">
+	    <DependentUpon>CatImagePopup.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Controls\CatCardView.xaml.cs">
+	    <DependentUpon>CatCardView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\AddedCatsPage.xaml.cs">
 	    <DependentUpon>AddedCatsPage.xaml</DependentUpon>
 	  </Compile>
@@ -78,6 +85,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="CollectionViews\CatImagePopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\CatCardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\AddedCatsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
