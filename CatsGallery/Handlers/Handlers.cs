@@ -19,9 +19,23 @@ namespace CatsGallery.Handlers
                     handler.PlatformView.SetBackgroundColor(Colors.Transparent.ToPlatform());
                     handler.PlatformView.Background = null;
 #elif WINDOWS
-                    handler.PlatformView.BorderThickness = new Microsoft.UI.Xaml.Thickness(0);
-                    handler.PlatformView.BorderBrush = null;
+                    handler.PlatformView.BorderThickness = new Microsoft.UI.Xaml.Thickness(1);
+                    handler.PlatformView.BorderBrush = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Gray);
+                    handler.PlatformView.CornerRadius = new Microsoft.UI.Xaml.CornerRadius(5);
                     handler.PlatformView.Background = null;
+
+                    var margin = new Microsoft.UI.Xaml.Thickness(5, 0, 5, 10);
+                    handler.PlatformView.Margin = margin;
+
+                    handler.PlatformView.GotFocus += (sender, args) =>
+                    {
+                        handler.PlatformView.Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.LightGray);
+                    };
+
+                    handler.PlatformView.LostFocus += (sender, args) =>
+                    {
+                        handler.PlatformView.Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.White);
+                    };
 #endif
                 }
             });
