@@ -1,5 +1,4 @@
-﻿#if WINDOWS
-using Microsoft.Maui.Handlers;
+﻿using Microsoft.Maui.Handlers;
 
 namespace CatsGallery.Handlers
 {
@@ -29,4 +28,3 @@ namespace CatsGallery.Handlers
         }
     }
 }
-#endif
