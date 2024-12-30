@@ -5,7 +5,6 @@
         public App()
         {
             InitializeComponent();
-            Handlers.Handlers.RegisterHandlers();
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

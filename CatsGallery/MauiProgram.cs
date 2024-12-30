@@ -22,6 +22,11 @@ namespace CatsGallery
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.ConfigureMauiHandlers(handlers =>
+            {
+                handlers.AddHandler<Entry, Handlers.Handlers>();
+            });
+
             builder.Services.AddSingleton<ICatsService, CatsService>();
             builder.Services.AddSingleton<CatsViewModel>();
             builder.Services.AddSingleton<IPopupService, Services.PopupService>();
