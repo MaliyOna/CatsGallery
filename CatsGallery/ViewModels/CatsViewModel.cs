@@ -112,8 +112,8 @@ public class CatsViewModel : ViewModelBase
         NewCatName = string.Empty;
         NewCatDescription = string.Empty;
 
-        OnPropertyChanged(nameof(NewCatName));
-        OnPropertyChanged(nameof(NewCatDescription));
+        base.OnPropertyChanged(nameof(NewCatName));
+        base.OnPropertyChanged(nameof(NewCatDescription));
     }
 
     private async void OpenImagePopup(CatModel cat)

@@ -8,23 +8,34 @@ namespace CatsGallery.Handlers
         {
             base.ConnectHandler(platformView);
 
-            platformView.BorderThickness = new Microsoft.UI.Xaml.Thickness(1);
-            platformView.BorderBrush = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Gray);
-            platformView.CornerRadius = new Microsoft.UI.Xaml.CornerRadius(5);
-            platformView.Background = null;
-
-            var margin = new Microsoft.UI.Xaml.Thickness(5, 0, 5, 10);
-            platformView.Margin = margin;
-
-            platformView.GotFocus += (sender, args) =>
+            if (VirtualView is Entry entry && entry.StyleId == "Custom")
             {
-                platformView.Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.LightGray);
-            };
+                platformView.Style = null;
 
-            platformView.LostFocus += (sender, args) =>
-            {
+                platformView.BorderThickness = new Microsoft.UI.Xaml.Thickness(1);
+                platformView.BorderBrush = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Gray);
+                platformView.CornerRadius = new Microsoft.UI.Xaml.CornerRadius(5);
                 platformView.Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.White);
-            };
+                platformView.Margin = new Microsoft.UI.Xaml.Thickness(5, 0, 5, 10);
+
+                platformView.FocusVisualPrimaryBrush = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Transparent);
+                platformView.FocusVisualSecondaryBrush = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Transparent);
+
+                platformView.GotFocus += (sender, args) =>
+                {
+                    platformView.Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.LightGray);
+
+                    platformView.BorderThickness = new Microsoft.UI.Xaml.Thickness(0);
+                    platformView.BorderBrush = null;
+                };
+
+                platformView.LostFocus += (sender, args) =>
+                {
+                    platformView.Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.White);
+                    platformView.BorderThickness = new Microsoft.UI.Xaml.Thickness(1);
+                    platformView.BorderBrush = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Gray);
+                };
+            }
         }
     }
 }

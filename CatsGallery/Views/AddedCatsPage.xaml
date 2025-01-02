@@ -16,6 +16,7 @@
             </Entry>
 
             <Entry Placeholder="Введите описание кота"
+                   StyleId="Custom"
                    Text="{Binding NewCatDescription}"
                    TextChanged="OnDescriptionTextChanged">
             </Entry>
