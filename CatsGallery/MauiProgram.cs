@@ -1,4 +1,5 @@
 ﻿using CatsGallery.Abstractions;
+using CatsGallery.Controls;
 using CatsGallery.Services;
 using CatsGallery.ViewModels;
 using CommunityToolkit.Maui;
@@ -21,6 +22,11 @@ namespace CatsGallery
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            builder.ConfigureMauiHandlers(handlers =>
+            {
+                handlers.AddHandler<CustomEntry, Handlers.Handlers>();
+            });
 
             builder.Services.AddSingleton<ICatsService, CatsService>();
             builder.Services.AddSingleton<CatsViewModel>();

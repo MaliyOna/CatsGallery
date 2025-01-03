@@ -9,10 +9,16 @@
 
     <ScrollView>
         <VerticalStackLayout>
+            
             <Entry Placeholder="Введите имя кота"
-                   Text="{Binding NewCatName}"/>
-            <Entry Placeholder="Введите описание кота"
-                   Text="{Binding NewCatDescription}"/>
+                   Text="{Binding NewCatName}"
+                   TextChanged="OnNameTextChanged">
+            </Entry>
+
+            <controls:CustomEntry Placeholder="Введите описание кота"
+                       Text="{Binding NewCatDescription}"
+                       TextChanged="OnDescriptionTextChanged"/>
+            
             <Button Text="Добавить котика"
                     Command="{Binding AddCatCommand}"/>
 
