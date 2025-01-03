@@ -1,4 +1,5 @@
 ﻿using CatsGallery.Abstractions;
+using CatsGallery.Controls;
 using CatsGallery.Services;
 using CatsGallery.ViewModels;
 using CommunityToolkit.Maui;
@@ -24,7 +25,7 @@ namespace CatsGallery
 
             builder.ConfigureMauiHandlers(handlers =>
             {
-                handlers.AddHandler<Entry, Handlers.Handlers>();
+                handlers.AddHandler<CustomEntry, Handlers.Handlers>();
             });
 
             builder.Services.AddSingleton<ICatsService, CatsService>();

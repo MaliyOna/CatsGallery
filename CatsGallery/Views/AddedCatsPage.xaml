@@ -15,11 +15,9 @@
                    TextChanged="OnNameTextChanged">
             </Entry>
 
-            <Entry Placeholder="Введите описание кота"
-                   StyleId="Custom"
-                   Text="{Binding NewCatDescription}"
-                   TextChanged="OnDescriptionTextChanged">
-            </Entry>
+            <controls:CustomEntry Placeholder="Введите описание кота"
+                       Text="{Binding NewCatDescription}"
+                       TextChanged="OnDescriptionTextChanged"/>
             
             <Button Text="Добавить котика"
                     Command="{Binding AddCatCommand}"/>
